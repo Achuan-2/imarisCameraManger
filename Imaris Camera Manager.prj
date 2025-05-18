@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.apptool" plugin-version="1.0">
-  <configuration build-checksum="3175936985" file="E:\SynologyDrive\Private-Sujixiong\Code丨data_analysis\volume stack处理\imaris 插件\Imaris Camera Manager.prj" location="E:\SynologyDrive\Private-Sujixiong\Code丨data_analysis\volume stack处理\imaris 插件" name="Imaris Camera Manager" target="target.mlapps" target-name="Package App">
+  <configuration build-checksum="2529929124" file="E:\SynologyDrive\Private-Sujixiong\Code丨data_analysis\volume stack处理\imaris 插件\Imaris Camera Manager.prj" location="E:\SynologyDrive\Private-Sujixiong\Code丨data_analysis\volume stack处理\imaris 插件" name="Imaris Camera Manager" target="target.mlapps" target-name="Package App">
     <param.appname>Imaris Camera Manager</param.appname>
     <param.authnamewatermark>Achuan-2</param.authnamewatermark>
     <param.email />
@@ -8,7 +8,7 @@
     <param.icons />
     <param.summary />
     <param.description />
-    <param.screenshot>C:\Users\Achuan-2\AppData\Local\Temp\tp45bf8b54_9f0b_464e_bc84_631f9a4ac4fb.png</param.screenshot>
+    <param.screenshot>C:\Users\Achuan-2\AppData\Local\Temp\tp4c906e5b_ed41_4f9d_b104_2d6d2a09d8f0.png</param.screenshot>
     <param.version>1.0</param.version>
     <param.products.name />
     <param.products.id />

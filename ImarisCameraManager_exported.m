@@ -27,7 +27,8 @@ classdef ImarisCameraManager_exported < matlab.apps.AppBase
         viewer                  % Imaris Surpass camera
         quaternion              % Stored quaternion
         position                % Stored position
-        dataFile = 'ImarisCameraManager.mat' % File to store path data
+        dataFile  % File to store path data in app folder
+
     end
 
     % Callbacks that handle component events
@@ -35,6 +36,7 @@ classdef ImarisCameraManager_exported < matlab.apps.AppBase
 
         % Code that executes after component creation
         function startupFcn(app)
+            app.dataFile = fullfile(fileparts(mfilename('fullpath')), 'ImarisCameraManager.mat');
             if exist(app.dataFile, 'file')
                 load(app.dataFile, 'imarisPath');
                 % Ensure path ends with \XT\matlab
@@ -205,42 +207,51 @@ classdef ImarisCameraManager_exported < matlab.apps.AppBase
 
             % Create UIFigure and hide until all components are created
             app.UIFigure = uifigure('Visible', 'off');
+            app.UIFigure.Color = [0.96078431372549 0.96078431372549 0.96078431372549];
             app.UIFigure.Position = [93 93 412 550];
             app.UIFigure.Name = 'Imaris Camera Manager';
 
             % Create RollEditField
             app.RollEditField = uieditfield(app.UIFigure, 'numeric');
+            app.RollEditField.FontColor = [0.129411764705882 0.129411764705882 0.129411764705882];
             app.RollEditField.Enable = 'off';
             app.RollEditField.Position = [93 329 100 22];
 
             % Create RollEditFieldLabel
             app.RollEditFieldLabel = uilabel(app.UIFigure);
+            app.RollEditFieldLabel.FontColor = [0.129411764705882 0.129411764705882 0.129411764705882];
             app.RollEditFieldLabel.Position = [33 329 50 22];
             app.RollEditFieldLabel.Text = 'X';
 
             % Create PitchEditField
             app.PitchEditField = uieditfield(app.UIFigure, 'numeric');
+            app.PitchEditField.FontColor = [0.129411764705882 0.129411764705882 0.129411764705882];
             app.PitchEditField.Enable = 'off';
             app.PitchEditField.Position = [93 369 100 22];
 
             % Create PitchEditFieldLabel
             app.PitchEditFieldLabel = uilabel(app.UIFigure);
+            app.PitchEditFieldLabel.FontColor = [0.129411764705882 0.129411764705882 0.129411764705882];
             app.PitchEditFieldLabel.Position = [33 369 50 22];
             app.PitchEditFieldLabel.Text = 'Y';
 
             % Create YawEditField
             app.YawEditField = uieditfield(app.UIFigure, 'numeric');
+            app.YawEditField.FontColor = [0.129411764705882 0.129411764705882 0.129411764705882];
             app.YawEditField.Enable = 'off';
             app.YawEditField.Position = [93 409 100 22];
 
             % Create YawEditFieldLabel
             app.YawEditFieldLabel = uilabel(app.UIFigure);
+            app.YawEditFieldLabel.FontColor = [0.129411764705882 0.129411764705882 0.129411764705882];
             app.YawEditFieldLabel.Position = [33 409 50 22];
             app.YawEditFieldLabel.Text = 'Z';
 
             % Create RotateButton
             app.RotateButton = uibutton(app.UIFigure, 'push');
             app.RotateButton.ButtonPushedFcn = createCallbackFcn(app, @RotateButtonPushed, true);
+            app.RotateButton.BackgroundColor = [0.96078431372549 0.96078431372549 0.96078431372549];
+            app.RotateButton.FontColor = [0.129411764705882 0.129411764705882 0.129411764705882];
             app.RotateButton.Enable = 'off';
             app.RotateButton.Position = [34 276 100 30];
             app.RotateButton.Text = 'Rotate';
@@ -248,6 +259,8 @@ classdef ImarisCameraManager_exported < matlab.apps.AppBase
             % Create ResetButton
             app.ResetButton = uibutton(app.UIFigure, 'push');
             app.ResetButton.ButtonPushedFcn = createCallbackFcn(app, @ResetButtonPushed, true);
+            app.ResetButton.BackgroundColor = [0.96078431372549 0.96078431372549 0.96078431372549];
+            app.ResetButton.FontColor = [0.129411764705882 0.129411764705882 0.129411764705882];
             app.ResetButton.Enable = 'off';
             app.ResetButton.Position = [211 159 120 30];
             app.ResetButton.Text = 'Reset';
@@ -255,6 +268,8 @@ classdef ImarisCameraManager_exported < matlab.apps.AppBase
             % Create FitButton
             app.FitButton = uibutton(app.UIFigure, 'push');
             app.FitButton.ButtonPushedFcn = createCallbackFcn(app, @FitButtonPushed, true);
+            app.FitButton.BackgroundColor = [0.96078431372549 0.96078431372549 0.96078431372549];
+            app.FitButton.FontColor = [0.129411764705882 0.129411764705882 0.129411764705882];
             app.FitButton.Enable = 'off';
             app.FitButton.Position = [31 159 120 30];
             app.FitButton.Text = 'Fit';
@@ -262,6 +277,8 @@ classdef ImarisCameraManager_exported < matlab.apps.AppBase
             % Create PastePositionButton
             app.PastePositionButton = uibutton(app.UIFigure, 'push');
             app.PastePositionButton.ButtonPushedFcn = createCallbackFcn(app, @PastePositionButtonPushed, true);
+            app.PastePositionButton.BackgroundColor = [0.96078431372549 0.96078431372549 0.96078431372549];
+            app.PastePositionButton.FontColor = [0.129411764705882 0.129411764705882 0.129411764705882];
             app.PastePositionButton.Enable = 'off';
             app.PastePositionButton.Position = [211 219 120 30];
             app.PastePositionButton.Text = 'Paste Position';
@@ -269,6 +286,8 @@ classdef ImarisCameraManager_exported < matlab.apps.AppBase
             % Create CopyPositionButton
             app.CopyPositionButton = uibutton(app.UIFigure, 'push');
             app.CopyPositionButton.ButtonPushedFcn = createCallbackFcn(app, @CopyPositionButtonPushed, true);
+            app.CopyPositionButton.BackgroundColor = [0.96078431372549 0.96078431372549 0.96078431372549];
+            app.CopyPositionButton.FontColor = [0.129411764705882 0.129411764705882 0.129411764705882];
             app.CopyPositionButton.Enable = 'off';
             app.CopyPositionButton.Position = [31 219 120 30];
             app.CopyPositionButton.Text = 'Copy Position';
@@ -281,22 +300,28 @@ classdef ImarisCameraManager_exported < matlab.apps.AppBase
             % Create ConnectButton
             app.ConnectButton = uibutton(app.UIFigure, 'push');
             app.ConnectButton.ButtonPushedFcn = createCallbackFcn(app, @ConnectButtonPushed, true);
+            app.ConnectButton.BackgroundColor = [0.96078431372549 0.96078431372549 0.96078431372549];
+            app.ConnectButton.FontColor = [0.129411764705882 0.129411764705882 0.129411764705882];
             app.ConnectButton.Position = [32 465 100 30];
             app.ConnectButton.Text = 'Connect';
 
             % Create ImarisPathLabel
             app.ImarisPathLabel = uilabel(app.UIFigure);
+            app.ImarisPathLabel.FontColor = [0.129411764705882 0.129411764705882 0.129411764705882];
             app.ImarisPathLabel.Position = [30 510 100 22];
             app.ImarisPathLabel.Text = 'Imaris Path:';
 
             % Create ImarisPathEditField
             app.ImarisPathEditField = uieditfield(app.UIFigure, 'text');
+            app.ImarisPathEditField.FontColor = [0.129411764705882 0.129411764705882 0.129411764705882];
             app.ImarisPathEditField.Enable = 'off';
             app.ImarisPathEditField.Position = [130 510 200 22];
 
             % Create SelectPathButton
             app.SelectPathButton = uibutton(app.UIFigure, 'push');
             app.SelectPathButton.ButtonPushedFcn = createCallbackFcn(app, @SelectPathButtonPushed, true);
+            app.SelectPathButton.BackgroundColor = [0.96078431372549 0.96078431372549 0.96078431372549];
+            app.SelectPathButton.FontColor = [0.129411764705882 0.129411764705882 0.129411764705882];
             app.SelectPathButton.Position = [340 510 50 22];
             app.SelectPathButton.Text = 'Browse';
 
